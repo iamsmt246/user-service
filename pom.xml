@@ -43,6 +43,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- HATEOAS for additional link with reponse -->
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+        </dependency>
+
         <!-- Spring Boot Starter Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
