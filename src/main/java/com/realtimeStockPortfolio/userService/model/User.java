@@ -15,7 +15,7 @@ public class User {
     Long id;
 
     @NotBlank(message = "username cannot be blank")
-    String userName;
+    String username;
 
     @NotBlank(message = "password cannot be blank")
     String password;
