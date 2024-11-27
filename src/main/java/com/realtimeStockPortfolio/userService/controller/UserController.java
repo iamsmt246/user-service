@@ -1,18 +1,16 @@
 package com.realtimeStockPortfolio.userService.controller;
 
 import com.realtimeStockPortfolio.userService.exception.UserNotFoundException;
+import com.realtimeStockPortfolio.userService.model.User;
 import com.realtimeStockPortfolio.userService.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-import com.realtimeStockPortfolio.userService.model.User;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.swing.text.html.parser.Entity;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -28,15 +26,15 @@ public class UserController {
     UserService userService;
 
     @GetMapping()
-    List<User> getAllUser(){
+    List<User> getAllUser() {
         return userService.getAllUser();
     }
 
     @GetMapping("/{username}")
-    EntityModel<User> getUser(@PathVariable String username){
+    EntityModel<User> getUser(@PathVariable String username) {
         Optional<User> user = userService.getUser(username);
 
-        if(!user.isPresent()){
+        if (!user.isPresent()) {
             throw new UserNotFoundException("User with " + username + " not found.");
         }
 
@@ -48,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    ResponseEntity<User> registerUser(@RequestBody @Valid User user){
+    ResponseEntity<User> registerUser(@RequestBody @Valid User user) {
         User registeredUser = userService.registerUser(user);
 
         URI userLocation = ServletUriComponentsBuilder
